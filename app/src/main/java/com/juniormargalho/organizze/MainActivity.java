@@ -1,8 +1,13 @@
 package com.juniormargalho.organizze;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
+
 import com.heinrichreimersoftware.materialintro.app.IntroActivity;
 import com.heinrichreimersoftware.materialintro.slide.FragmentSlide;
+import com.juniormargalho.organizze.activity.CadastroActivity;
+import com.juniormargalho.organizze.activity.LoginActivity;
 
 public class MainActivity extends IntroActivity {
 
@@ -14,6 +19,7 @@ public class MainActivity extends IntroActivity {
         setButtonBackVisible(false);
         setButtonNextVisible(false);
 
+        //Slides de Introdução do aplicativo
         addSlide( new FragmentSlide.Builder()
                 .background(android.R.color.white)
                 .fragment(R.layout.intro_1)
@@ -34,5 +40,19 @@ public class MainActivity extends IntroActivity {
                 .fragment(R.layout.intro_4)
                 .build() );
 
+        addSlide( new FragmentSlide.Builder()
+                .background(android.R.color.white)
+                .fragment(R.layout.intro_cadastro)
+                .build() );
+
     }
+
+    public void btCadastrar(View view){
+        startActivity(new Intent(this, CadastroActivity.class));
+    }
+
+    public void btEntrar(View view){
+        startActivity(new Intent(this, LoginActivity.class));
+    }
+
 }
