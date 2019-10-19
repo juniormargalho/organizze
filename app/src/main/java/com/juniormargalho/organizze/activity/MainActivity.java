@@ -1,4 +1,4 @@
-package com.juniormargalho.organizze;
+package com.juniormargalho.organizze.activity;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -6,6 +6,7 @@ import android.view.View;
 
 import com.heinrichreimersoftware.materialintro.app.IntroActivity;
 import com.heinrichreimersoftware.materialintro.slide.FragmentSlide;
+import com.juniormargalho.organizze.R;
 import com.juniormargalho.organizze.activity.CadastroActivity;
 import com.juniormargalho.organizze.activity.LoginActivity;
 
