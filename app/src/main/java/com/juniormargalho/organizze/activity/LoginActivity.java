@@ -13,6 +13,10 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseAuthInvalidCredentialsException;
+import com.google.firebase.auth.FirebaseAuthInvalidUserException;
+import com.google.firebase.auth.FirebaseAuthUserCollisionException;
+import com.google.firebase.auth.FirebaseAuthWeakPasswordException;
 import com.juniormargalho.organizze.R;
 import com.juniormargalho.organizze.config.ConfiguracaoFirebase;
 import com.juniormargalho.organizze.model.Usuario;
@@ -71,7 +75,20 @@ public class LoginActivity extends AppCompatActivity {
                         if(task.isSuccessful()){
                             Toast.makeText(LoginActivity.this, "Sucesso ao fazer login!", Toast.LENGTH_SHORT).show();
                         }else {
-                            Toast.makeText(LoginActivity.this, "Erro ao fazer login!", Toast.LENGTH_SHORT).show();
+
+                            String excecao = "";
+                            try {
+                                throw task.getException();
+                            }catch ( FirebaseAuthInvalidUserException e ) {
+                                excecao = "Conta não cadastrada!";
+                            }catch ( FirebaseAuthInvalidCredentialsException e ) {
+                                excecao = "Senha Incorreta!";
+                            }catch ( Exception e ){
+                                excecao = "Erro ao cadastrar usuário: " + e.getMessage();
+                                e.printStackTrace();
+                            }
+
+                            Toast.makeText(LoginActivity.this, excecao, Toast.LENGTH_SHORT).show();
                         }
 
                     }
