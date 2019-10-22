@@ -4,18 +4,24 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 
+import com.google.firebase.auth.FirebaseAuth;
 import com.heinrichreimersoftware.materialintro.app.IntroActivity;
 import com.heinrichreimersoftware.materialintro.slide.FragmentSlide;
 import com.juniormargalho.organizze.R;
 import com.juniormargalho.organizze.activity.CadastroActivity;
 import com.juniormargalho.organizze.activity.LoginActivity;
+import com.juniormargalho.organizze.config.ConfiguracaoFirebase;
 
 public class MainActivity extends IntroActivity {
+
+    private FirebaseAuth autenticacao;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         //setContentView(R.layout.activity_main);
+
+        verificarUsuarioLogado();
 
         setButtonBackVisible(false);
         setButtonNextVisible(false);
@@ -44,6 +50,7 @@ public class MainActivity extends IntroActivity {
         addSlide( new FragmentSlide.Builder()
                 .background(android.R.color.white)
                 .fragment(R.layout.intro_cadastro)
+                .canGoForward(false)
                 .build() );
 
     }
@@ -54,6 +61,20 @@ public class MainActivity extends IntroActivity {
 
     public void btEntrar(View view){
         startActivity(new Intent(this, LoginActivity.class));
+    }
+
+    public void verificarUsuarioLogado(){
+
+        autenticacao = ConfiguracaoFirebase.getFirebaseAutenticacao();
+
+        if (autenticacao.getCurrentUser() != null){
+            abrirTelaPrincipal();
+        }
+
+    }
+
+    public void abrirTelaPrincipal(){
+        startActivity(new Intent(this, PrincipalActivity.class));
     }
 
 }
