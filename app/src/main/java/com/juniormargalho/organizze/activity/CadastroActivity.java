@@ -18,6 +18,7 @@ import com.google.firebase.auth.FirebaseAuthUserCollisionException;
 import com.google.firebase.auth.FirebaseAuthWeakPasswordException;
 import com.juniormargalho.organizze.R;
 import com.juniormargalho.organizze.config.ConfiguracaoFirebase;
+import com.juniormargalho.organizze.helper.Base64Custom;
 import com.juniormargalho.organizze.model.Usuario;
 
 public class CadastroActivity extends AppCompatActivity {
@@ -78,6 +79,9 @@ public class CadastroActivity extends AppCompatActivity {
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if( task.isSuccessful() ){
 
+                            String idUsuario = Base64Custom.codificarBase64(usuario.getEmail());
+                            usuario.setIdUsusario(idUsuario);
+                            usuario.salvar();
                             finish();
 
                         }else {
