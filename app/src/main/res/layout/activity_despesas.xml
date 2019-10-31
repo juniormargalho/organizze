@@ -71,7 +71,7 @@
             android:id="@+id/editCategoria"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Categoria (ex.: Salário)" />
+            android:hint="Categoria (ex.: Conta)" />
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
@@ -91,7 +91,7 @@
             android:id="@+id/editDescricao"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Descrição (ex.: Salário Mensal)" />
+            android:hint="Descrição (ex.: Conta de Energia)" />
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
