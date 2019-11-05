@@ -201,7 +201,6 @@ public class PrincipalActivity extends AppCompatActivity {
 
             }
         });
-
     }
 
     public void recuperarResumo(){

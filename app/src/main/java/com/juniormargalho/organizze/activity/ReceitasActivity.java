@@ -21,6 +21,10 @@ import com.juniormargalho.organizze.helper.DateCustom;
 import com.juniormargalho.organizze.model.Movimentacao;
 import com.juniormargalho.organizze.model.Usuario;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
 public class ReceitasActivity extends AppCompatActivity {
 
     private TextInputEditText campoData, campoCategoria, campoDescricao;
@@ -78,7 +82,7 @@ public class ReceitasActivity extends AppCompatActivity {
         String textoDescricao = campoDescricao.getText().toString();
 
         if ( !textoValor.isEmpty() ){
-            if ( !textoData.isEmpty() ){
+            if ( !textoData.isEmpty() && testaTamanhoData(textoData) ){
                 if ( !textoCategoria.isEmpty() ){
                     if ( !textoDescricao.isEmpty() ){
                         return true;
@@ -93,7 +97,7 @@ public class ReceitasActivity extends AppCompatActivity {
 
                 }
             } else{
-                Toast.makeText(ReceitasActivity.this, "Data não foi preenchida!", Toast.LENGTH_SHORT).show();
+                Toast.makeText(ReceitasActivity.this, "Data não preenchida ou Formato inválido!", Toast.LENGTH_SHORT).show();
                 return false;
 
             }
@@ -102,7 +106,15 @@ public class ReceitasActivity extends AppCompatActivity {
             return false;
 
         }
+    }
 
+    public Boolean testaTamanhoData(String data){
+        int tamanhoData = data.length();
+        if(tamanhoData == 10){
+            return true;
+        }else{
+            return false;
+        }
     }
 
     public void recuperarReceitaTotal(){

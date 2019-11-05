@@ -50,7 +50,7 @@
             android:id="@+id/editData"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Data (ex.: 25/10/2019)" />
+            android:hint="Data (ex.: 01/01/2019)" />
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout

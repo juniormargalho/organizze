@@ -77,7 +77,7 @@ public class DespesasActivity extends AppCompatActivity {
         String textoDescricao = campoDescricao.getText().toString();
 
         if ( !textoValor.isEmpty() ){
-            if ( !textoData.isEmpty() ){
+            if ( !textoData.isEmpty() && testaTamanhoData(textoData) ){
                 if ( !textoCategoria.isEmpty() ){
                     if ( !textoDescricao.isEmpty() ){
                         return true;
@@ -92,7 +92,7 @@ public class DespesasActivity extends AppCompatActivity {
 
                 }
             } else{
-                Toast.makeText(DespesasActivity.this, "Data não foi preenchida!", Toast.LENGTH_SHORT).show();
+                Toast.makeText(DespesasActivity.this, "Data não preenchida ou Formato inválido!", Toast.LENGTH_SHORT).show();
                 return false;
 
             }
@@ -100,6 +100,15 @@ public class DespesasActivity extends AppCompatActivity {
             Toast.makeText(DespesasActivity.this, "Valor não foi preenchido!", Toast.LENGTH_SHORT).show();
             return false;
 
+        }
+    }
+
+    public Boolean testaTamanhoData(String data){
+        int tamanhoData = data.length();
+        if(tamanhoData == 10){
+            return true;
+        }else{
+            return false;
         }
     }
 
