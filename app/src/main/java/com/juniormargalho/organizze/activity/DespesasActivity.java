@@ -68,7 +68,6 @@ public class DespesasActivity extends AppCompatActivity {
             finish();
 
         }
-
     }
 
     public Boolean validarCamposDespesa(){
@@ -102,7 +101,6 @@ public class DespesasActivity extends AppCompatActivity {
             return false;
 
         }
-
     }
 
     public void recuperarDespesaTotal(){
@@ -121,7 +119,6 @@ public class DespesasActivity extends AppCompatActivity {
             public void onCancelled(@NonNull DatabaseError databaseError) {
 
             }
-
         });
     }
 
