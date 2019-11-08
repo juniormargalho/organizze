@@ -82,7 +82,7 @@ public class ReceitasActivity extends AppCompatActivity {
         String textoDescricao = campoDescricao.getText().toString();
 
         if ( !textoValor.isEmpty() ){
-            if ( !textoData.isEmpty() && testaTamanhoData(textoData) ){
+            if ( !textoData.isEmpty() && DateCustom.isValidDate(textoData) ){
                 if ( !textoCategoria.isEmpty() ){
                     if ( !textoDescricao.isEmpty() ){
                         return true;
@@ -105,15 +105,6 @@ public class ReceitasActivity extends AppCompatActivity {
             Toast.makeText(ReceitasActivity.this, "Valor não foi preenchido!", Toast.LENGTH_SHORT).show();
             return false;
 
-        }
-    }
-
-    public Boolean testaTamanhoData(String data){
-        int tamanhoData = data.length();
-        if(tamanhoData == 10){
-            return true;
-        }else{
-            return false;
         }
     }
 
